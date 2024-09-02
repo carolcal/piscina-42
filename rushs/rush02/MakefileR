@@ -1,0 +1,22 @@
+NAME = rush-02
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+
+SRCS = consult.c filter_dict.c main.c organize.c read_dict.c utils.c
+OBJS = $(SRCS:.C=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
+%.o: %.c main.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
