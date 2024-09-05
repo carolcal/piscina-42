@@ -6,54 +6,37 @@
 /*   By: cayamash <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 08:50:59 by cayamash          #+#    #+#             */
-/*   Updated: 2024/08/28 10:08:17 by cayamash         ###   ########.fr       */
+/*   Updated: 2024/09/03 12:50:46 by cayamash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_printnbr(int nb)
+void	ft_printnbr(long nb)
 {
-	char	c[10];
-	int		i;
+	char	c;
 
-	i = 0;
-	while (nb != 0)
-	{
-		c[i] = (nb % 10) + '0';
-		nb /= 10;
-		i++;
-	}
-	i = i - 1;
-	while (i >= 0)
-	{
-		write(1, &c[i], 1);
-		i--;
-	}
+	if (nb > 9)
+		ft_printnbr(nb / 10);
+	c = (nb % 10) + '0';
+	write(1, &c, 1);
 }
 
 void	ft_putnbr(int nb)
 {
-	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return ;
-	}
-	else if (nb == 0)
-	{
-		write(1, "0", 1);
-		return ;
-	}
-	else if (nb < 0)
+	long	long_nb;
+
+	long_nb = nb;
+	if (long_nb < 0)
 	{
 		write(1, "-", 1);
-		nb = -nb;
+		long_nb = -long_nb;
 	}
-	if (nb > 0)
-		ft_printnbr(nb);
+	ft_printnbr(long_nb);
 }
 
 /*int	main(void)
 {
-	ft_putnbr(-2147483647);
+	ft_putnbr(-2147483648);
+	return (0);
 }*/

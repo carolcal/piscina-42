@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cayamash <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 08:43:17 by cayamash          #+#    #+#             */
-/*   Updated: 2024/09/03 07:50:34 by cayamash         ###   ########.fr       */
+/*   Created: 2024/09/02 10:23:47 by cayamash          #+#    #+#             */
+/*   Updated: 2024/09/04 11:03:16 by cayamash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int	ft_iterative_factorial(int nb)
 {
 	int	i;
 
-	i = 0;
-	while (str[i] != '\0')
+	if (nb > 1)
 	{
-		write(1, &str[i], 1);
-		i++;
+		i = nb - 1;
+		while (i > 0)
+		{
+			nb = nb * i;
+			i --;
+		}
+		return (nb);
 	}
+	else if (nb >= 0)
+		return (1);
+	else
+		return (0);
 }
 
-/*int	main(void)
-{
-	char	str[14] = "PArtiu C0dar!";
-
-	ft_putstr(str);
+/*#include <stdio.h>
+int	main(){
+	int num = ft_iterative_factorial(6);
+	printf("%i", num);
+	return(0);
 }*/

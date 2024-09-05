@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cayamash <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 08:43:17 by cayamash          #+#    #+#             */
-/*   Updated: 2024/09/03 07:50:34 by cayamash         ###   ########.fr       */
+/*   Created: 2024/09/02 11:54:39 by cayamash          #+#    #+#             */
+/*   Updated: 2024/09/04 11:06:01 by cayamash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int	ft_fibonacci(int index)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
+	if (index < 0)
+		return (-1);
+	if (index == 0)
+		return (0);
+	if (index == 1)
+		return (1);
+	return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
 }
 
-/*int	main(void)
+/*#include <stdio.h>
+int	main(void)
 {
-	char	str[14] = "PArtiu C0dar!";
-
-	ft_putstr(str);
+	int num = ft_fibonacci(8);
+	printf("%i", num);
+	return(0);
 }*/

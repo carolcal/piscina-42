@@ -6,11 +6,10 @@
 /*   By: cayamash <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 08:37:06 by cayamash          #+#    #+#             */
-/*   Updated: 2024/08/28 08:50:04 by cayamash         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:47:53 by cayamash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -21,7 +20,9 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-/*int	main()
+/*
+#include <stdio.h>
+int	main()
 {
 	int 	n;
 

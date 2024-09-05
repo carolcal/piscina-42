@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cayamash <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 08:43:17 by cayamash          #+#    #+#             */
-/*   Updated: 2024/09/03 07:50:34 by cayamash         ###   ########.fr       */
+/*   Created: 2024/09/02 11:29:23 by cayamash          #+#    #+#             */
+/*   Updated: 2024/09/04 11:04:50 by cayamash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int	ft_iterative_power(int nb, int power)
 {
-	int	i;
+	int	result;
 
-	i = 0;
-	while (str[i] != '\0')
+	result = nb;
+	if (power < 0)
+		return (0);
+	else if (power == 0)
+		return (1);
+	else
 	{
-		write(1, &str[i], 1);
-		i++;
+		while (power > 1)
+		{
+			result = result * nb;
+			power--;
+		}
+		return (result);
 	}
 }
 
-/*int	main(void)
+/*#include <stdio.h>
+int	main(void)
 {
-	char	str[14] = "PArtiu C0dar!";
-
-	ft_putstr(str);
+	int num = ft_iterative_power(-3, 3);
+	printf("%i", num);
+	return (0);
 }*/

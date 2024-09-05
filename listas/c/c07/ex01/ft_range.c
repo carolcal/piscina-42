@@ -1,47 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cayamash <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 10:09:52 by cayamash          #+#    #+#             */
-/*   Updated: 2024/09/04 18:54:18 by cayamash         ###   ########.fr       */
+/*   Created: 2024/09/05 12:57:56 by cayamash          #+#    #+#             */
+/*   Updated: 2024/09/05 16:25:58 by cayamash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
-{
-	int	i;
-	int	nbr;
-	int	sin;
+#include <stdio.h>
+#include <stdlib.h>
 
+int	*ft_range(int min, int max)
+{
+	int	*array;
+	int	len;
+	int	i;
+	
+	array = NULL;
+	if(min > max)
+		return (array);
 	i = 0;
-	nbr = 0;
-	sin = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	while (str[i] == '+' || str[i] == '-')
+	len = max - min;
+	array = (int *)malloc(len * sizeof(int));
+	max --;
+	while (min <= max)
 	{
-		if (str[i] == '-')
-			sin *= -1;
+		array[i] = max;
+		max--;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nbr *= 10;
-		nbr += str[i] - '0';
-		i++;
-	}
-	return (nbr * sin);
+	return(array);
 }
 
-/*#include <stdio.h>
 int	main(void)
 {
-	int	i;
-	char	c[20]= "   ---+--+j1234ab567";
-
-	i = ft_atoi(c);
-	printf("Lista:%i", i);
-}*/
+	int	*array;
+	array = ft_range(12, 9);
+/*	unsigned long	i;
+	i = 0;
+	while(i < sizeof(*array))
+	{
+		printf("%i\n", array[i]);
+		i++;
+	}*/
+	printf("%p", array);
+}

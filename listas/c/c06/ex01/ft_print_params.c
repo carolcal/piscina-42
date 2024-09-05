@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cayamash <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 08:43:17 by cayamash          #+#    #+#             */
-/*   Updated: 2024/09/03 07:50:34 by cayamash         ###   ########.fr       */
+/*   Created: 2024/09/04 09:28:35 by cayamash          #+#    #+#             */
+/*   Updated: 2024/09/04 18:04:12 by cayamash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+void	ft_putstring(char *str)
+{
+	if (*str != '\0')
+	{
+		write(1, &str[0], 1);
+		str++;
+		ft_putstring(str);
+	}
+	return ;
+}
+
+int	main(int argc, char *argv[])
 {
 	int	i;
 
-	i = 0;
-	while (str[i] != '\0')
+	i = 1;
+	while (i < argc)
 	{
-		write(1, &str[i], 1);
+		ft_putstring(argv[i]);
+		write(1, "\n", 1);
 		i++;
 	}
+	return (0);
 }
-
-/*int	main(void)
-{
-	char	str[14] = "PArtiu C0dar!";
-
-	ft_putstr(str);
-}*/
